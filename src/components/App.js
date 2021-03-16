@@ -9,7 +9,8 @@ import uniqueid from 'uniqueid'
 class App extends React.Component{
 
     state = {
-        tasks: initialData
+        tasks: initialData,
+        fetching: true
     }
 
     onToggleCompleted = (taskId) => {
@@ -44,7 +45,25 @@ class App extends React.Component{
         })
     }
 
+    shouldComponentUpdate = () => {
+        console.log('Bonjour de shouldComponentUpdate')
+        return true
+    }
+
+    componentDidMount = () => {
+        console.log('Bonjour de componentDidMount')
+    }
+
+    componentDidUpdate = () => {
+        console.log('Bonjour de componentDidUpdate')
+    }
+
+    getSnapshotBeforeUpdate = () => {
+        console.log('Bonjour de getSnapshotBeforeUpdate')
+    }
+
     render(){
+        console.log('Bonjour de render')
         return(
             <section id="todo">
                 <BrowserRouter>
