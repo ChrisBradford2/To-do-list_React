@@ -5,6 +5,13 @@ import AddTask from './AddTask';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import initialData from '../initialData'
 import uniqueid from 'uniqueid'
+import CookieConsent, { Cookies, getCookieConsentValue } from "react-cookie-consent";
+
+console.log(getCookieConsentValue());
+
+<CookieConsent location="top" cookieName="myAwesomeCookieName3" expires={999} overlay>
+  This website uses cookies to enhance the user experience.
+</CookieConsent>
 
 class App extends React.Component{
 
@@ -63,6 +70,8 @@ class App extends React.Component{
     }
 
     render(){
+        Cookies.set("test", "nice");
+
         console.log('Bonjour de render')
         return(
             <section id="todo">
@@ -73,6 +82,17 @@ class App extends React.Component{
                     </Switch>
                     <NavBar onDeleteCompleted ={this.onDeleteCompleted}/>
                 </BrowserRouter>
+
+                <CookieConsent
+                  location="bottom"
+                  buttonText="Sure man!!"
+                  cookieName="myAwesomeCookieName2"
+                  style={{ background: "#2B373B" }}
+                  buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+                  expires={1500}
+                >
+                  This website uses cookies to enhance the user experience.{" "}
+                </CookieConsent>
             </section>
         )
     }
